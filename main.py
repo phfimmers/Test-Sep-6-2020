@@ -41,6 +41,8 @@ while game_active:
             if player.play() == "empty":
                 cards_left_to_play = False
                 break
+            else:
+                player.play()
         else:
             clear_output(wait=True)
             print(myboard)

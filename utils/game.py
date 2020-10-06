@@ -18,7 +18,8 @@ class Card():
         self.color = Card.color_scheme[symbol]
     
     def __str__(self):
-        print(f"{self.symbol}{self.number}\n")
+        string = f"{self.symbol}{self.number}\n"
+        return string
 
 
 class Board():
@@ -35,14 +36,14 @@ class Board():
         self.played_cards = []
     
     def __str__(self):
-        print("Active cards:\n")
+        string = "Active cards:\n"
         for board_player in self.players:
-            print(f'{board_player}:')
+            string += f'{board_player}:'
             for player, card in self.active_cards:
                 if board_player == player:
-                    print(card)
+                    string += str(card)
             else:
-                print("\n")
+                string = "\n"
         print("Played cards:\n")
         for board_player in self.players:
             print(f'{board_player}:')
@@ -51,6 +52,7 @@ class Board():
                     print(card)
             else:
                 print("\n")
+        return string
     
     def play_card(self, name: str, card):
         """Receive the card from a player and register
