@@ -38,13 +38,12 @@ while game_active:
     cards_left_to_play = True
     while cards_left_to_play:
         for player in players:
-            if player.play() == "empty":
+            turn = player.play()
+            print(turn)
+            if turn == "empty":
                 cards_left_to_play = False
                 break
-            else:
-                player.play()
         else:
-            clear_output(wait=True)
             print(myboard)
     
     # replay (reusing the same players, or stop)

@@ -12,14 +12,13 @@ class Card():
     
     color_scheme = {'♥': 'red', '♦': 'red', '♣': 'black', '♠': 'black'}
     
-    def __init__(self, symbol: str, number: Union(int, str)):
+    def __init__(self, symbol: str, number: Union[int, str]):
         self.symbol = symbol
         self.number = number
         self.color = Card.color_scheme[symbol]
     
     def __str__(self):
-        string = f"{self.symbol}{self.number}\n"
-        return string
+        return f"{self.symbol}{self.number}"
 
 
 class Board():
@@ -41,17 +40,15 @@ class Board():
             string += f'{board_player}:'
             for player, card in self.active_cards:
                 if board_player == player:
-                    string += str(card)
-            else:
-                string = "\n"
-        print("Played cards:\n")
+                    string += ", "+str(card)
+            string += "\n\n"
+        string += "Played cards:\n"
         for board_player in self.players:
-            print(f'{board_player}:')
+            string += f'{board_player}:'
             for player, card in self.played_cards:
                 if board_player == player:
-                    print(card)
-            else:
-                print("\n")
+                    string += ", "+str(card)
+            string += "\n"
         return string
     
     def play_card(self, name: str, card):
@@ -83,7 +80,7 @@ class Player():
         """plays the top card or returns 'empty'"""
         if len(self.cards) > 0:
             self.board.play_card(name=self.name, card=self.cards.pop())
-            print(f'{self.name} played their card.\n')
+            return f'{self.name} played their card.\n'
         else:
             return "empty"
     
